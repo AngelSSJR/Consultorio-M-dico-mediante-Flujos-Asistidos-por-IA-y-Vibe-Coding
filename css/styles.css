@@ -1,0 +1,107 @@
+/* ----------------------------------------------------------------------
+   css/styles.css  – estilos personalizados (sin @apply ni Tailwind config)
+   ---------------------------------------------------------------------- */
+
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+html { font-family: 'Inter', system-ui, sans-serif; }
+.heading-serif { font-family: 'DM Serif Display', Georgia, serif; }
+
+/* Tokens de color */
+:root {
+  --color-primary: #0284c7;
+  --color-primary-deep: #0369a1;
+  --color-success: #059669;
+  --color-error: #b91c1c;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-border: #64748b;               /* ≥ 3 : 1 contra blanco */
+}
+
+/* Utilidades genéricas --------------------------------------------------- */
+.bg-background { background-color: var(--color-background); }
+.bg-surface    { background-color: var(--color-surface); }
+.text-primary  { color: var(--color-text-primary); }
+.text-secondary{ color: var(--color-text-secondary); }
+.border        { border-color: var(--color-border); }
+
+/* ----- Botones ----- */
+.btn-primary {
+  background-color: var(--color-primary-deep);
+  color: #ffffff;
+  min-height: 3rem;               /* 48 px */
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;        /* 6 px */
+  font-weight: 600;
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: #025b8a;      /* 10 % darker */
+}
+
+/* ----- Focus visible ----- */
+.focus-visible-ring-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-deep);
+}
+
+/* ----- Skip link ----- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-primary-deep);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus-visible {
+  top: 0;
+}
+
+/* ----- Input / Select / Textarea ----- */
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Estado error en controles */
+input.error,
+select.error,
+textarea.error {
+  border-color: var(--color-error);
+  background-color: #fef2f2;   /* error background */
+  color: var(--color-error);
+}
+
+/* Focus visible en controles */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-deep);
+}
+
+/* ----- Backgrounds auxiliares ----- */
+.bg-primary-deep { background-color: var(--color-primary-deep); }
+.bg-success      { background-color: var(--color-success); }
+.bg-error        { background-color: var(--color-error); }
+
+/* ----- Responsive hero image spacing (optional) ----- */
+@media (max-width: 639px) {
+  #hero .grid { gap: 1.5rem; }
+}
+
+/* No transition on mobile menu – prefers‑reduced‑motion not needed */
