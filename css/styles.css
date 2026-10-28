@@ -1,14 +1,14 @@
 /* ----------------------------------------------------------------------
-   css/styles.css  – estilos personalizados (sin @apply ni Tailwind config)
+   css/styles.css  – custom styles (no @apply, no Tailwind config)
    ---------------------------------------------------------------------- */
 
-/* Tipografías */
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
 
 html { font-family: 'Inter', system-ui, sans-serif; }
 .heading-serif { font-family: 'DM Serif Display', Georgia, serif; }
 
-/* Tokens de color */
+/* Color tokens */
 :root {
   --color-primary: #0284c7;
   --color-primary-deep: #0369a1;
@@ -18,17 +18,17 @@ html { font-family: 'Inter', system-ui, sans-serif; }
   --color-surface: #ffffff;
   --color-text-primary: #0f172a;
   --color-text-secondary: #475569;
-  --color-border: #64748b;               /* ≥ 3 : 1 contra blanco */
+  --color-border: #64748b;               /* ≥ 3 : 1 vs. white */
 }
 
-/* Utilidades genéricas --------------------------------------------------- */
+/* Generic utilities */
 .bg-background { background-color: var(--color-background); }
 .bg-surface    { background-color: var(--color-surface); }
 .text-primary  { color: var(--color-text-primary); }
 .text-secondary{ color: var(--color-text-secondary); }
 .border        { border-color: var(--color-border); }
 
-/* ----- Botones ----- */
+/* ----- Buttons ----- */
 .btn-primary {
   background-color: var(--color-primary-deep);
   color: #ffffff;
@@ -77,16 +77,16 @@ textarea {
   line-height: 1.5;
 }
 
-/* Estado error en controles */
+/* Error state */
 input.error,
 select.error,
 textarea.error {
   border-color: var(--color-error);
-  background-color: #fef2f2;   /* error background */
+  background-color: #fef2f2;
   color: var(--color-error);
 }
 
-/* Focus visible en controles */
+/* Focus visible on controls */
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
@@ -94,12 +94,12 @@ textarea:focus-visible {
   box-shadow: 0 0 0 3px var(--color-primary-deep);
 }
 
-/* ----- Backgrounds auxiliares ----- */
+/* ----- Auxiliary backgrounds ----- */
 .bg-primary-deep { background-color: var(--color-primary-deep); }
 .bg-success      { background-color: var(--color-success); }
 .bg-error        { background-color: var(--color-error); }
 
-/* ----- Responsive hero image spacing (optional) ----- */
+/* ----- Responsive hero‑image spacing (optional) ----- */
 @media (max-width: 639px) {
   #hero .grid { gap: 1.5rem; }
 }

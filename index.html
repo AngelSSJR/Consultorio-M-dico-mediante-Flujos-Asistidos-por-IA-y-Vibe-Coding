@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MediCare Plus – Landing Demo</title>
 
-  <!-- Tailwind CSS CDN (v3.x) --
+  <!-- Tailwind CSS CDN (v3.x) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Estilos personalizados -->
+  <!-- Custom styles -->
   <link rel="stylesheet" href="css/styles.css">
 
-  <!-- JavaScript modular -->
+  <!-- Modular JavaScript -->
   <script type="module" src="js/app.js" defer></script>
 </head>
 <body class="bg-background text-primary font-sans">
@@ -22,19 +22,19 @@
     Ir al contenido principal
   </a>
 
-  <!-- Ancla “home” para el enlace de inicio -->
+  <!-- Anchor “home” for the brand link -->
   <div id="home"></div>
 
   <!-- ==================== HEADER ==================== -->
   <header class="sticky top-0 bg-surface shadow-md z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
 
-      <!-- Marca -->
+      <!-- Brand -->
       <a href="#home"
          class="text-2xl font-serif heading-serif text-primary"
          id="brand-name">MediCare Plus</a>
 
-      <!-- Botón móvil (solo visible en ≤ md) -->
+      <!-- Mobile button (visible ≤ md) -->
       <button id="mobile-menu-btn"
               class="md:hidden inline-flex items-center justify-center p-2 rounded-md focus-visible:outline-none focus-visible-ring-primary"
               aria-controls="mobile-menu"
@@ -48,7 +48,7 @@
         </svg>
       </button>
 
-      <!-- Navegación de escritorio -->
+      <!-- Desktop navigation -->
       <nav class="hidden md:flex space-x-6"
            aria-label="Navegación principal"
            id="desktop-nav">
@@ -69,7 +69,7 @@
            data-nav="contact"></a>
       </nav>
 
-      <!-- Selector de idioma -->
+      <!-- Language selector -->
       <div class="flex space-x-2">
         <button data-lang="es"
                 class="lang-btn px-2 py-1 text-sm rounded-md bg-primary-deep text-white focus-visible:outline-none focus-visible-ring-primary">
@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <!-- Menú móvil (oculto por defecto) -->
+    <!-- Mobile menu (hidden by default) -->
     <div id="mobile-menu"
          class="md:hidden hidden px-4 pb-4 space-y-4">
       <a href="#home"
@@ -110,7 +110,7 @@
     <section id="hero"
              class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 lg:px-8 py-12 items-center"
              aria-labelledby="hero-title">
-      <!-- Texto -->
+      <!-- Text -->
       <div class="space-y-4">
         <h1 id="hero-title"
             class="heading-serif text-4xl lg:text-5xl text-primary"></h1>
@@ -121,9 +121,9 @@
            class="inline-block btn-primary mt-4"></a>
       </div>
 
-      <!-- Imagen -->
+      <!-- Image -->
       <div class="relative">
-        <!-- Ruta provisional – sustituir por la imagen real en assets/images/hero.jpg -->
+        <!-- Placeholder – replace with the real image at assets/images/hero.jpg -->
         <img src="assets/images/hero.jpg"
              id="hero-image"
              class="w-full h-auto rounded-lg object-cover"
@@ -131,7 +131,7 @@
       </div>
     </section>
 
-    <!-- El resto de secciones se añadirá en fases posteriores -->
+    <!-- Remaining sections will be added in later phases -->
   </main>
 </body>
 </html>
