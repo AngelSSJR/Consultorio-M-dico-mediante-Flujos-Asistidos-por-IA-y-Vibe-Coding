@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare Plus – Landing Demo</title>
+
+  <!-- Tailwind CSS CDN (v3.x) --
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- JavaScript modular -->
+  <script type="module" src="js/app.js" defer></script>
+</head>
+<body class="bg-background text-primary font-sans">
+
+  <!-- Skip link – visible only on focus -->
+  <a href="#main-content"
+     class="skip-link sr-only focus:not-sr-only focus-visible:outline-none focus-visible:ring-2 focus-visible-ring-primary">
+    Ir al contenido principal
+  </a>
+
+  <!-- Ancla “home” para el enlace de inicio -->
+  <div id="home"></div>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="sticky top-0 bg-surface shadow-md z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+
+      <!-- Marca -->
+      <a href="#home"
+         class="text-2xl font-serif heading-serif text-primary"
+         id="brand-name">MediCare Plus</a>
+
+      <!-- Botón móvil (solo visible en ≤ md) -->
+      <button id="mobile-menu-btn"
+              class="md:hidden inline-flex items-center justify-center p-2 rounded-md focus-visible:outline-none focus-visible-ring-primary"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+              aria-label="Abrir menú">
+        <!-- Heroicon menu -->
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- Navegación de escritorio -->
+      <nav class="hidden md:flex space-x-6"
+           aria-label="Navegación principal"
+           id="desktop-nav">
+        <a href="#home"
+           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="home"></a>
+        <a href="#services"
+           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="services"></a>
+        <a href="#team"
+           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="team"></a>
+        <a href="#appointment"
+           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="appointment"></a>
+        <a href="#contact"
+           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="contact"></a>
+      </nav>
+
+      <!-- Selector de idioma -->
+      <div class="flex space-x-2">
+        <button data-lang="es"
+                class="lang-btn px-2 py-1 text-sm rounded-md bg-primary-deep text-white focus-visible:outline-none focus-visible-ring-primary">
+          ES
+        </button>
+        <button data-lang="en"
+                class="lang-btn px-2 py-1 text-sm rounded-md bg-gray-200 text-primary focus-visible:outline-none focus-visible-ring-primary">
+          EN
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú móvil (oculto por defecto) -->
+    <div id="mobile-menu"
+         class="md:hidden hidden px-4 pb-4 space-y-4">
+      <a href="#home"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="home"></a>
+      <a href="#services"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="services"></a>
+      <a href="#team"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="team"></a>
+      <a href="#appointment"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="appointment"></a>
+      <a href="#contact"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="contact"></a>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN ==================== -->
+  <main id="main-content" class="pt-8">
+
+    <!-- HERO (split) -->
+    <section id="hero"
+             class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 lg:px-8 py-12 items-center"
+             aria-labelledby="hero-title">
+      <!-- Texto -->
+      <div class="space-y-4">
+        <h1 id="hero-title"
+            class="heading-serif text-4xl lg:text-5xl text-primary"></h1>
+        <p id="hero-description"
+           class="text-lg text-secondary"></p>
+        <a href="#appointment"
+           id="hero-cta"
+           class="inline-block btn-primary mt-4"></a>
+      </div>
+
+      <!-- Imagen -->
+      <div class="relative">
+        <!-- Ruta provisional – sustituir por la imagen real en assets/images/hero.jpg -->
+        <img src="assets/images/hero.jpg"
+             id="hero-image"
+             class="w-full h-auto rounded-lg object-cover"
+             alt="">
+      </div>
+    </section>
+
+    <!-- El resto de secciones se añadirá en fases posteriores -->
+  </main>
+</body>
+</html>
