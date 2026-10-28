@@ -8,7 +8,7 @@ const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 
 /* -------------------------------------------------
-   1️⃣  Validar y obtener idioma guardado
+   1️⃣  Validate & obtain stored language
    ------------------------------------------------- */
 function getStoredLang() {
   const stored = sessionStorage.getItem("mediLang");
@@ -17,26 +17,24 @@ function getStoredLang() {
 let currentLang = getStoredLang();
 
 /* -------------------------------------------------
-   2️⃣  Cambiar idioma y actualizar UI
+   2️⃣  Change language & update UI
    ------------------------------------------------- */
 function setLang(lang) {
-  if (lang !== "es" && lang !== "en") lang = "es"; // medida de seguridad
+  if (lang !== "es" && lang !== "en") lang = "es";
   const t = getTranslations(lang);
   currentLang = lang;
   sessionStorage.setItem("mediLang", lang);
 
-  // atributo HTML lang
+  // <html lang>
   htmlEl.lang = lang;
 
-  /* Navegación (uso de data‑nav) */
+  // Navigation (using data‑nav)
   navLinks.forEach(link => {
     const key = link.dataset.nav;
-    if (t.nav[key]) {
-      link.textContent = t.nav[key];
-    }
+    if (t.nav[key]) link.textContent = t.nav[key];
   });
 
-  /* Hero */
+  // Hero
   document.getElementById("hero-title").textContent = t.hero.title;
   document.getElementById("hero-description").textContent = t.hero.description;
   const cta = document.getElementById("hero-cta");
@@ -44,7 +42,7 @@ function setLang(lang) {
   cta.setAttribute("aria-label", t.hero.cta);
   document.getElementById("hero-image").alt = t.hero.imgAlt;
 
-  /* Botones de idioma – indicar activo */
+  // Language buttons – indicate active
   langButtons.forEach(btn => {
     const isActive = btn.dataset.lang === lang;
     btn.classList.toggle("bg-primary-deep", isActive);
@@ -55,7 +53,7 @@ function setLang(lang) {
 }
 
 /* -------------------------------------------------
-   3️⃣  Menú móvil: abrir / cerrar
+   3️⃣  Mobile menu: open / close
    ------------------------------------------------- */
 function toggleMobileMenu() {
   const expanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
@@ -63,7 +61,7 @@ function toggleMobileMenu() {
   mobileMenu.classList.toggle("hidden", expanded);
 }
 
-/* Cerrar menú móvil al hacer click en cualquier enlace */
+/* Close mobile menu when a link is clicked */
 function closeMobileMenuIfOpen() {
   if (mobileMenuBtn.getAttribute("aria-expanded") === "true") {
     mobileMenuBtn.setAttribute("aria-expanded", "false");
@@ -72,32 +70,32 @@ function closeMobileMenuIfOpen() {
 }
 
 /* -------------------------------------------------
-   4️⃣  Escuchar eventos
+   4️⃣  Event listeners
    ------------------------------------------------- */
 mobileMenuBtn.addEventListener("click", toggleMobileMenu);
 
-/* Cerrar menú al pulsar un enlace (tanto desktop como móvil) */
+/* Close menu on any navigation click (desktop & mobile) */
 navLinks.forEach(link => {
   link.addEventListener("click", () => {
     closeMobileMenuIfOpen();
   });
 });
 
-/* Cambio de idioma */
+/* Language switch */
 langButtons.forEach(btn => {
   btn.addEventListener("click", () => setLang(btn.dataset.lang));
 });
 
-/* Cerrar menú al pasar a vista desktop (resize) */
+/* Close mobile menu when viewport becomes desktop */
 window.addEventListener("resize", () => {
-  const mdBreakpoint = 768; // Tailwind md = 768px
+  const mdBreakpoint = 768; // Tailwind md = 768 px
   if (window.innerWidth >= mdBreakpoint) {
     closeMobileMenuIfOpen();
   }
 });
 
 /* -------------------------------------------------
-   5️⃣  Inicializar
+   5️⃣  Initialise
    ------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   setLang(currentLang);

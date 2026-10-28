@@ -1,16 +1,9 @@
-// js/i18n/i18n.js
-import { ES } from "./es.js";
-import { EN } from "./en.js";
+import { es } from "./es.js";
+import { en } from "./en.js";
 
-const LANG_MAP = {
-  es: ES,
-  en: EN
-};
+const translations = { es, en };
 
-/**
- * Devuelve el objeto de traducciones para el idioma indicado.
- * Si el idioma no está soportado, vuelve al español por defecto.
- */
-export function getTranslations(lang = "es") {
-  return LANG_MAP[lang] || LANG_MAP["es"];
+export function getTranslations(lang) {
+  // Fallback to Spanish if an unexpected value is passed
+  return translations[lang] || translations.es;
 }
