@@ -58,32 +58,67 @@
            aria-label="Navegación principal"
            id="desktop-nav">
         <a href="#home"
-           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
-           data-nav="home"></a>
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="home">
+          <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6"/></svg>
+          <span class="nav-text"></span>
+        </a>
         <a href="#services"
-           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
-           data-nav="services"></a>
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="services">
+          <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6"/></svg>
+          <span class="nav-text"></span>
+        </a>
         <a href="#team"
-           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
-           data-nav="team"></a>
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="team">
+          <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/></svg>
+          <span class="nav-text"></span>
+        </a>
         <a href="#appointment"
-           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
-           data-nav="appointment"></a>
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="appointment">
+          <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10"/></svg>
+          <span class="nav-text"></span>
+        </a>
         <a href="#contact"
-           class="nav-link text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
-           data-nav="contact"></a>
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="contact">
+          <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8"/></svg>
+          <span class="nav-text"></span>
+        </a>
       </nav>
 
-      <!-- Language selector -->
-      <div class="flex space-x-2">
-        <button data-lang="es"
-                class="lang-btn px-2 py-1 text-sm rounded-md bg-primary-deep text-white focus-visible:outline-none focus-visible-ring-primary">
-          ES
+      <!-- Language selector (dropdown with flags) -->
+      <div class="relative" id="lang-dropdown">
+        <button id="lang-toggle"
+                class="flex items-center space-x-1 px-2 py-1 rounded-md bg-gray-200 text-primary focus-visible:outline-none focus-visible-ring-primary"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Cambiar idioma">
+          <!-- Globe icon -->
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4z"/></svg>
+          <span id="current-lang-label">ES</span>
         </button>
-        <button data-lang="en"
-                class="lang-btn px-2 py-1 text-sm rounded-md bg-gray-200 text-primary focus-visible:outline-none focus-visible-ring-primary">
-          EN
-        </button>
+        <ul id="lang-menu"
+            class="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-md shadow-lg hidden">
+          <li>
+            <button data-lang="es"
+                    class="flex items-center w-full px-2 py-1 hover:bg-gray-100 focus-visible:outline-none focus-visible-ring-primary">
+              <!-- Flag Spain -->
+              <svg class="w-4 h-4 mr-1" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="480" fill="#c60b1e"/><rect y="160" width="640" height="160" fill="#ffc400"/></svg>
+              <span>ES</span>
+            </button>
+          </li>
+          <li>
+            <button data-lang="en"
+                    class="flex items-center w-full px-2 py-1 hover:bg-gray-100 focus-visible:outline-none focus-visible-ring-primary">
+              <!-- Flag United Kingdom -->
+              <svg class="w-4 h-4 mr-1" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="t"><path d="M0 0h60v30H0z"/></clipPath><g clip-path="url(#t)"><rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><rect width="60" height="30" fill="none" stroke="#fff" stroke-width="10"/></g></svg>
+              <span>EN</span>
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
 

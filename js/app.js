@@ -3,7 +3,8 @@ import { getTranslations } from "./i18n/i18n.js";
 
 const htmlEl = document.documentElement;
 const navLinks = document.querySelectorAll(".nav-link");
-const langButtons = document.querySelectorAll(".lang-btn");
+// Language buttons inside dropdown
+const langButtons = document.querySelectorAll("#lang-menu button[data-lang]");
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 
@@ -31,7 +32,10 @@ function setLang(lang) {
   // Navigation (using data‑nav)
   navLinks.forEach(link => {
     const key = link.dataset.nav;
-    if (t.nav[key]) link.textContent = t.nav[key];
+    const span = link.querySelector('.nav-text');
+    if (t.nav[key] && span) {
+      span.textContent = t.nav[key];
+    }
   });
 
   // Hero
