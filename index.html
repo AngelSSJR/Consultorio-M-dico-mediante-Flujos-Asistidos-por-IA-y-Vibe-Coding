@@ -167,7 +167,11 @@
         <img src="assets/images/hero.jpg"
              id="hero-image"
              class="w-full h-auto rounded-lg object-cover"
-             alt="">
+             alt=""
+             onerror="this.style.display='none'; this.nextElementSibling?.classList.remove('hidden');">
+        <p id="hero-image-fallback" class="hidden bg-gray-100 border border-gray-200 rounded-lg p-8 text-center text-gray-500 text-sm">
+          Imagen del héroe no disponible (agregue assets/images/hero.jpg)
+        </p>
       </div>
     </section>
 
