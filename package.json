@@ -1,0 +1,15 @@
+{
+  "name": "medicare-plus",
+  "version": "1.0.0",
+  "description": "Landing page médica demostrativa desarrollada con Vibe Coding y asistencia de IA",
+  "main": "index.html",
+  "scripts": {
+    "lint": "eslint js/",
+    "lint:fix": "eslint js/ --fix"
+  },
+  "keywords": ["landing", "medical", "vibe-coding", "html", "javascript"],
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}

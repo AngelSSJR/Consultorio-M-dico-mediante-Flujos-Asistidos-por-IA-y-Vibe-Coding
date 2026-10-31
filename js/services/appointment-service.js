@@ -6,8 +6,8 @@ export async function requestAppointment(data) {
       resolve({
         success: true,
         demo: true,
-        reference: 'MC-' + Math.random().toString(36).slice(2, 8).toUpperCase(),
-        message: 'Solicitud registrada en modo demostrativo.',
+        reference: "MC-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
+        message: "Solicitud registrada en modo demostrativo.",
         data,
       });
     }, SIMULATED_DELAY_MS);

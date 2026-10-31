@@ -25,9 +25,9 @@ let currentLang = getStoredLang();
 /* -------------------------------------------------
    2️⃣  Render dynamic content blocks
    ------------------------------------------------- */
-function renderServices(t) {
+function renderServices() {
   const grid = document.getElementById("services-grid");
-  if (!grid) return;
+  if (!grid) {return;}
   grid.innerHTML = services.map(s => `
     <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
       <div class="w-12 h-12 bg-primary-deep/10 rounded-lg flex items-center justify-center mb-4 text-primary-deep">
@@ -41,7 +41,7 @@ function renderServices(t) {
 
 function renderTeam(t) {
   const grid = document.getElementById("team-grid");
-  if (!grid) return;
+  if (!grid) {return;}
   grid.innerHTML = professionals.map(p => `
     <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm text-center">
       <img src="${p.image}"
@@ -57,7 +57,7 @@ function renderTeam(t) {
 
 function renderSelectSpecialties(t) {
   const select = document.getElementById("specialty");
-  if (!select) return;
+  if (!select) {return;}
   select.innerHTML = `<option value="">${t.appointment.selectSpecialty}</option>` +
     services.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
 }
@@ -66,7 +66,7 @@ function renderSelectSpecialties(t) {
    3️⃣  Change language & update UI
    ------------------------------------------------- */
 function setLang(lang) {
-  if (!SUPPORTED_LANGS.includes(lang)) lang = DEFAULT_LANG;
+  if (!SUPPORTED_LANGS.includes(lang)) {lang = DEFAULT_LANG;}
   const t = getTranslations(lang);
   currentLang = lang;
   sessionStorage.setItem(STORAGE_KEY_LANG, lang);
@@ -77,7 +77,7 @@ function setLang(lang) {
   // Navigation (using data-nav)
   navLinks.forEach(link => {
     const key = link.dataset.nav;
-    const span = link.querySelector('.nav-text');
+    const span = link.querySelector(".nav-text");
     if (t.nav[key] && span) {
       span.textContent = t.nav[key];
     }
@@ -92,14 +92,13 @@ function setLang(lang) {
   document.getElementById("hero-image").alt = t.hero.imgAlt;
 
   // Section titles & descriptions
-  const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+  const setText = (id, value) => { const el = document.getElementById(id); if (el) {el.textContent = value;} };
   setText("services-title", t.services.title);
   setText("team-title", t.team.title);
   setText("testimonials-title", t.testimonials.title);
   setText("appointment-title", t.appointment.title);
   setText("contact-title", t.contact.title);
 
-  const setDesc = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
   // Description paragraphs are next siblings of titles in each section
   const descMap = {
     "services-desc": t.services.description,
@@ -108,7 +107,7 @@ function setLang(lang) {
     "appointment-desc": t.appointment.description,
     "contact-desc": t.contact.description
   };
-  Object.entries(descMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
+  Object.entries(descMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) {el.textContent = val;} });
 
   // Appointment form labels
   const labelMap = {
@@ -120,15 +119,15 @@ function setLang(lang) {
     "date-label": t.appointment.date,
     "time-label": t.appointment.time
   };
-  Object.entries(labelMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
+  Object.entries(labelMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) {el.textContent = val;} });
 
   // Appointment submit button
   const submitBtn = document.querySelector("#appointment-form button[type='submit']");
-  if (submitBtn) submitBtn.textContent = t.appointment.submit;
+  if (submitBtn) {submitBtn.textContent = t.appointment.submit;}
 
   // Demo notice
   const demoNotice = document.querySelector("#appointment-form p:first-of-type");
-  if (demoNotice) demoNotice.textContent = t.appointment.demoNotice;
+  if (demoNotice) {demoNotice.textContent = t.appointment.demoNotice;}
 
   // Footer
   setText("footer-text", t.footer.text);
@@ -189,7 +188,7 @@ window.addEventListener("resize", () => {
    ------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   setLang(currentLang);
-  renderServices(getTranslations(currentLang));
+  renderServices();
   renderTeam(getTranslations(currentLang));
   renderSelectSpecialties(getTranslations(currentLang));
 
