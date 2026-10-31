@@ -1,9 +1,14 @@
 // js/app.js
 import { getTranslations } from "./i18n/i18n.js";
+import { services } from "./data/services.js";
+import { professionals } from "./data/professionals.js";
+import { initAppointmentForm } from "./components/appointment-form.js";
+import { setupLanguageSwitcher } from "./components/language-switcher.js";
+import { initNavigation } from "./components/navigation.js";
+import { STORAGE_KEY_LANG, DEFAULT_LANG, SUPPORTED_LANGS } from "./config/constants.js";
 
 const htmlEl = document.documentElement;
 const navLinks = document.querySelectorAll(".nav-link");
-// Language buttons inside dropdown
 const langButtons = document.querySelectorAll("#lang-menu button[data-lang]");
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
@@ -12,24 +17,64 @@ const mobileMenu = document.getElementById("mobile-menu");
    1️⃣  Validate & obtain stored language
    ------------------------------------------------- */
 function getStoredLang() {
-  const stored = sessionStorage.getItem("mediLang");
-  return stored === "es" || stored === "en" ? stored : "es";
+  const stored = sessionStorage.getItem(STORAGE_KEY_LANG);
+  return SUPPORTED_LANGS.includes(stored) ? stored : DEFAULT_LANG;
 }
 let currentLang = getStoredLang();
 
 /* -------------------------------------------------
-   2️⃣  Change language & update UI
+   2️⃣  Render dynamic content blocks
+   ------------------------------------------------- */
+function renderServices(t) {
+  const grid = document.getElementById("services-grid");
+  if (!grid) return;
+  grid.innerHTML = services.map(s => `
+    <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+      <div class="w-12 h-12 bg-primary-deep/10 rounded-lg flex items-center justify-center mb-4 text-primary-deep">
+        <span class="text-lg">${s.icon}</span>
+      </div>
+      <h3 class="text-lg font-semibold text-primary mb-2">${s.name}</h3>
+      <p class="text-secondary text-sm">${s.description}</p>
+    </article>
+  `).join("");
+}
+
+function renderTeam(t) {
+  const grid = document.getElementById("team-grid");
+  if (!grid) return;
+  grid.innerHTML = professionals.map(p => `
+    <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm text-center">
+      <img src="${p.image}"
+           alt="Foto de ${p.name}"
+           class="w-20 h-20 mx-auto rounded-full mb-4 object-cover"
+           onerror="this.src='assets/images/hero.svg'; this.alt='Placeholder de imagen';">
+      <h3 class="text-lg font-semibold text-primary mb-1">${p.name}</h3>
+      <p class="text-secondary text-sm mb-3">${p.specialty}</p>
+      <span class="text-xs text-primary-deep font-medium bg-primary-deep/10 px-2 py-1 rounded">${t.team.demo}</span>
+    </article>
+  `).join("");
+}
+
+function renderSelectSpecialties(t) {
+  const select = document.getElementById("specialty");
+  if (!select) return;
+  select.innerHTML = `<option value="">${t.appointment.selectSpecialty}</option>` +
+    services.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
+}
+
+/* -------------------------------------------------
+   3️⃣  Change language & update UI
    ------------------------------------------------- */
 function setLang(lang) {
-  if (lang !== "es" && lang !== "en") lang = "es";
+  if (!SUPPORTED_LANGS.includes(lang)) lang = DEFAULT_LANG;
   const t = getTranslations(lang);
   currentLang = lang;
-  sessionStorage.setItem("mediLang", lang);
+  sessionStorage.setItem(STORAGE_KEY_LANG, lang);
 
   // <html lang>
   htmlEl.lang = lang;
 
-  // Navigation (using data‑nav)
+  // Navigation (using data-nav)
   navLinks.forEach(link => {
     const key = link.dataset.nav;
     const span = link.querySelector('.nav-text');
@@ -46,6 +91,48 @@ function setLang(lang) {
   cta.setAttribute("aria-label", t.hero.cta);
   document.getElementById("hero-image").alt = t.hero.imgAlt;
 
+  // Section titles & descriptions
+  const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+  setText("services-title", t.services.title);
+  setText("team-title", t.team.title);
+  setText("testimonials-title", t.testimonials.title);
+  setText("appointment-title", t.appointment.title);
+  setText("contact-title", t.contact.title);
+
+  const setDesc = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+  // Description paragraphs are next siblings of titles in each section
+  const descMap = {
+    "services-desc": t.services.description,
+    "team-desc": t.team.description,
+    "testimonials-desc": t.testimonials.description,
+    "appointment-desc": t.appointment.description,
+    "contact-desc": t.contact.description
+  };
+  Object.entries(descMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
+
+  // Appointment form labels
+  const labelMap = {
+    "name-label": t.appointment.name,
+    "dni-label": t.appointment.dni,
+    "email-label": t.appointment.email,
+    "phone-label": t.appointment.phone,
+    "specialty-label": t.appointment.specialty,
+    "date-label": t.appointment.date,
+    "time-label": t.appointment.time
+  };
+  Object.entries(labelMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
+
+  // Appointment submit button
+  const submitBtn = document.querySelector("#appointment-form button[type='submit']");
+  if (submitBtn) submitBtn.textContent = t.appointment.submit;
+
+  // Demo notice
+  const demoNotice = document.querySelector("#appointment-form p:first-of-type");
+  if (demoNotice) demoNotice.textContent = t.appointment.demoNotice;
+
+  // Footer
+  setText("footer-text", t.footer.text);
+
   // Language buttons – indicate active
   langButtons.forEach(btn => {
     const isActive = btn.dataset.lang === lang;
@@ -54,10 +141,15 @@ function setLang(lang) {
     btn.classList.toggle("text-white", isActive);
     btn.classList.toggle("text-primary", !isActive);
   });
+
+  // Re-render dynamic content
+  renderServices(t);
+  renderTeam(t);
+  renderSelectSpecialties(t);
 }
 
 /* -------------------------------------------------
-   3️⃣  Mobile menu: open / close
+   4️⃣  Mobile menu: open / close
    ------------------------------------------------- */
 function toggleMobileMenu() {
   const expanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
@@ -65,7 +157,6 @@ function toggleMobileMenu() {
   mobileMenu.classList.toggle("hidden", expanded);
 }
 
-/* Close mobile menu when a link is clicked */
 function closeMobileMenuIfOpen() {
   if (mobileMenuBtn.getAttribute("aria-expanded") === "true") {
     mobileMenuBtn.setAttribute("aria-expanded", "false");
@@ -74,33 +165,42 @@ function closeMobileMenuIfOpen() {
 }
 
 /* -------------------------------------------------
-   4️⃣  Event listeners
+   5️⃣  Event listeners
    ------------------------------------------------- */
 mobileMenuBtn.addEventListener("click", toggleMobileMenu);
 
-/* Close menu on any navigation click (desktop & mobile) */
 navLinks.forEach(link => {
   link.addEventListener("click", () => {
     closeMobileMenuIfOpen();
   });
 });
 
-/* Language switch */
-langButtons.forEach(btn => {
-  btn.addEventListener("click", () => setLang(btn.dataset.lang));
-});
+setupLanguageSwitcher(getTranslations, setLang);
+initNavigation();
 
-/* Close mobile menu when viewport becomes desktop */
 window.addEventListener("resize", () => {
-  const mdBreakpoint = 768; // Tailwind md = 768 px
-  if (window.innerWidth >= mdBreakpoint) {
+  if (window.innerWidth >= 768) {
     closeMobileMenuIfOpen();
   }
 });
 
 /* -------------------------------------------------
-   5️⃣  Initialise
+   6️⃣  Initialise
    ------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   setLang(currentLang);
+  renderServices(getTranslations(currentLang));
+  renderTeam(getTranslations(currentLang));
+  renderSelectSpecialties(getTranslations(currentLang));
+
+  initAppointmentForm("appointment-form", (result) => {
+    const resultEl = document.getElementById("appointment-result");
+    if (resultEl) {
+      const t = getTranslations(currentLang);
+      resultEl.classList.remove("hidden", "text-error", "text-success");
+      resultEl.classList.add("text-success", "mt-4", "text-sm", "font-medium");
+      resultEl.textContent = t.appointment.successMessage.replace("{ref}", result.reference);
+      resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  });
 });

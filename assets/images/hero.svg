@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#f1f5f9"/>
+  <circle cx="400" cy="200" r="120" fill="#0284c7" opacity="0.15"/>
+  <rect x="280" y="120" width="240" height="160" rx="12" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+  <text x="400" y="260" font-family="Inter, sans-serif" font-size="24" font-weight="600" fill="#0284c7" text-anchor="middle">MediCare Plus</text>
+  <text x="400" y="290" font-family="Inter, sans-serif" font-size="16" fill="#475569" text-anchor="middle">Imagen del héroe (placeholder)</text>
+</svg>
