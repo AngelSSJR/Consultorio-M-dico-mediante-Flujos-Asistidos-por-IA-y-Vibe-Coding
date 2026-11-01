@@ -129,7 +129,7 @@ function setLang(lang) {
   if (submitBtn) {submitBtn.textContent = t.appointment.submit;}
 
   // Demo notice
-  const demoNotice = document.querySelector("#appointment-form p:first-of-type");
+  const demoNotice = document.getElementById("appointment-demo-notice");
   if (demoNotice) {demoNotice.textContent = t.appointment.demoNotice;}
 
   // Footer

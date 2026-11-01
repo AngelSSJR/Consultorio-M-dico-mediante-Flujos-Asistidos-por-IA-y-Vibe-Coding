@@ -1,15 +1,9 @@
 import { validateForm } from "../utils/validation.js";
 import { requestAppointment } from "../services/appointment-service.js";
-import { APPOINTMENT_DEMO_NOTICE } from "../config/constants.js";
 
 export function initAppointmentForm(formId, onSuccess) {
   const form = document.getElementById(formId);
   if (!form) {return;}
-
-  const notice = document.createElement("p");
-  notice.className = "text-xs text-secondary mt-2 mb-4";
-  notice.textContent = APPOINTMENT_DEMO_NOTICE;
-  form.prepend(notice);
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
