@@ -10,6 +10,9 @@ import { STORAGE_KEY_LANG, DEFAULT_LANG, SUPPORTED_LANGS } from "./config/consta
 const htmlEl = document.documentElement;
 const navLinks = document.querySelectorAll(".nav-link");
 const langButtons = document.querySelectorAll("#lang-menu button[data-lang]");
+const langToggle = document.getElementById("lang-toggle");
+const langMenu = document.getElementById("lang-menu");
+const currentLangLabel = document.getElementById("current-lang-label");
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 
@@ -132,6 +135,11 @@ function setLang(lang) {
   // Footer
   setText("footer-text", t.footer.text);
 
+  // Update visible language label
+  if (currentLangLabel) {
+    currentLangLabel.textContent = lang.toUpperCase();
+  }
+
   // Language buttons – indicate active
   langButtons.forEach(btn => {
     const isActive = btn.dataset.lang === lang;
@@ -140,6 +148,14 @@ function setLang(lang) {
     btn.classList.toggle("text-white", isActive);
     btn.classList.toggle("text-primary", !isActive);
   });
+
+  // Close language dropdown after selecting
+  if (langMenu) {
+    langMenu.classList.add("hidden");
+    if (langToggle) {
+      langToggle.setAttribute("aria-expanded", "false");
+    }
+  }
 
   // Re-render dynamic content
   renderServices(t);
@@ -176,6 +192,24 @@ navLinks.forEach(link => {
 
 setupLanguageSwitcher(getTranslations, setLang);
 initNavigation();
+
+/* Language dropdown toggle */
+if (langToggle && langMenu) {
+  langToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const expanded = langToggle.getAttribute("aria-expanded") === "true";
+    langToggle.setAttribute("aria-expanded", String(!expanded));
+    langMenu.classList.toggle("hidden", expanded);
+  });
+}
+
+/* Close language dropdown when clicking outside */
+window.addEventListener("click", (event) => {
+  if (langToggle && langMenu && !langToggle.contains(event.target) && !langMenu.contains(event.target)) {
+    langMenu.classList.add("hidden");
+    langToggle.setAttribute("aria-expanded", "false");
+  }
+});
 
 window.addEventListener("resize", () => {
   if (window.innerWidth >= 768) {
