@@ -1,21 +1,21 @@
 export const professionals = [
   {
     id: "dr-1",
-    name: "Dra. Ana López",
+    name: "Dr. Juan Pérez",
     specialty: "Medicina General",
     image: "assets/images/team/doctor-1.jpg",
     demo: true,
   },
   {
     id: "dr-2",
-    name: "Dr. Carlos Ruiz",
+    name: "Dra. Laura Gómez",
     specialty: "Pediatría",
     image: "assets/images/team/doctor-2.jpg",
     demo: true,
   },
   {
     id: "dr-3",
-    name: "Dra. Sofía Méndez",
+    name: "Dr. Roberto Sánchez",
     specialty: "Cardiología",
     image: "assets/images/team/doctor-3.jpg",
     demo: true,
