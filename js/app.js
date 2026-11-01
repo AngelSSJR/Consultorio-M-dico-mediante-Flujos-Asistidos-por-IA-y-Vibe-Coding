@@ -33,9 +33,10 @@ function renderServices() {
   if (!grid) {return;}
   grid.innerHTML = services.map(s => `
     <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-      <div class="w-12 h-12 bg-primary-deep/10 rounded-lg flex items-center justify-center mb-4 text-primary-deep">
-        <span class="text-lg">${s.icon}</span>
-      </div>
+      <img src="${s.image}"
+           alt="${s.name}"
+           class="w-full h-32 object-cover rounded-lg mb-4"
+           onerror="this.src='assets/images/hero.jpg'; this.alt='Imagen no disponible';">
       <h3 class="text-lg font-semibold text-primary mb-2">${s.name}</h3>
       <p class="text-secondary text-sm">${s.description}</p>
     </article>
