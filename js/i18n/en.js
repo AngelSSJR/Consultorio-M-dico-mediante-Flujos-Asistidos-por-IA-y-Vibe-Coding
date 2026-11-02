@@ -28,7 +28,11 @@ export const en = {
     items: [
       { quote: "Excellent care and human touch. Highly recommended.", author: "Ana García" },
       { quote: "The clinic is modern and the doctors are very professional.", author: "Luis Martínez" },
-      { quote: "Very satisfied with the pediatric service for my children.", author: "Carmen Rojas" }
+      { quote: "Very satisfied with the pediatric service for my children.", author: "Carmen Rojas" },
+      { quote: "Fast and efficient service. Very satisfied with the care.", author: "Martín Silva" },
+      { quote: "The specialists are very attentive and explain everything clearly.", author: "Patricia Herrera" },
+      { quote: "Modern facilities and first-class equipment. 100% recommended.", author: "Ricardo Núñez" },
+      { quote: "Excellent post-consultation follow-up. They care about the patient.", author: "Valeria Castro" }
     ]
   },
   appointment: {

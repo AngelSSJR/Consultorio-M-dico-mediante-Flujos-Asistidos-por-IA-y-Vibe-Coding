@@ -28,7 +28,11 @@ export const es = {
     items: [
       { quote: "Excelente atención y trato humano. Muy recomendado.", author: "Ana García" },
       { quote: "La clínica es moderna y los doctores son muy profesionales.", author: "Luis Martínez" },
-      { quote: "Muy satisfecho con el servicio de pediatría para mis hijos.", author: "Carmen Rojas" }
+      { quote: "Muy satisfecho con el servicio de pediatría para mis hijos.", author: "Carmen Rojas" },
+      { quote: "Atención rápida y eficiente. Muy conforme con el servicio.", author: "Martín Silva" },
+      { quote: "Los especialistas son muy atentos y explican todo con claridad.", author: "Patricia Herrera" },
+      { quote: "Instalaciones modernas y equipo de primera. Recomendado al 100%.", author: "Ricardo Núñez" },
+      { quote: "Excelente seguimiento post-consulta. Se preocupan por el paciente.", author: "Valeria Castro" }
     ]
   },
   appointment: {
