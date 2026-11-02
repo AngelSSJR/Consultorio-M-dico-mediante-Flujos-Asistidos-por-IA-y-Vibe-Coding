@@ -216,19 +216,23 @@
           <h2 id="testimonials-title" class="heading-serif text-3xl lg:text-4xl text-primary mb-4">Testimonios</h2>
           <p id="testimonials-desc" class="text-secondary">Voces de nuestros pacientes (contenido demostrativo).</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm">
-            <p class="italic text-secondary mb-4">"Excelente atención y trato humano. Muy recomendado."</p>
-            <cite class="text-primary font-medium">— Ana García</cite>
-          </article>
-          <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm">
-            <p class="italic text-secondary mb-4">"La clínica es moderna y los doctores son muy profesionales."</p>
-            <cite class="text-primary font-medium">— Luis Martínez</cite>
-          </article>
-          <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm">
-            <p class="italic text-secondary mb-4">"Muy satisfecho con el servicio de pediatría para mis hijos."</p>
-            <cite class="text-primary font-medium">— Carmen Rojas</cite>
-          </article>
+        <div class="testimonial-carousel mx-auto max-w-2xl">
+          <div class="testimonial-track overflow-hidden rounded-lg border border-gray-200 bg-surface p-8 shadow-sm">
+            <div id="testimonial-slides" class="testimonial-slides flex transition-transform duration-500 ease-in-out">
+              <!-- Slides inyectados por JS -->
+            </div>
+          </div>
+          <button id="testimonial-prev"
+                  class="testimonial-btn prev absolute -left-8 top-1/2 -translate-y-1/2 md:-left-4 z-10"
+                  aria-label="Testimonio anterior"
+                  type="button">‹</button>
+          <button id="testimonial-next"
+                  class="testimonial-btn next absolute -right-8 top-1/2 -translate-y-1/2 md:-right-4 z-10"
+                  aria-label="Testimonio siguiente"
+                  type="button">›</button>
+          <div id="testimonial-dots" class="testimonial-dots flex justify-center gap-2 mt-6">
+            <!-- Indicadores inyectados por JS -->
+          </div>
         </div>
       </div>
     </section>

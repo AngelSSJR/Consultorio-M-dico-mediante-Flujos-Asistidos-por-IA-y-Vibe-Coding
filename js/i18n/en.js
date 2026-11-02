@@ -24,7 +24,12 @@ export const en = {
   },
   testimonials: {
     title: "Testimonials",
-    description: "Voices of our patients (demo content)."
+    description: "Voices of our patients (demo content).",
+    items: [
+      { quote: "Excellent care and human touch. Highly recommended.", author: "Ana García" },
+      { quote: "The clinic is modern and the doctors are very professional.", author: "Luis Martínez" },
+      { quote: "Very satisfied with the pediatric service for my children.", author: "Carmen Rojas" }
+    ]
   },
   appointment: {
     title: "Request Appointment",

@@ -16,6 +16,14 @@ const currentLangLabel = document.getElementById("current-lang-label");
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 
+/* Testimonial carousel state */
+const testimonialSlides = document.getElementById("testimonial-slides");
+const testimonialDots = document.getElementById("testimonial-dots");
+const testimonialPrev = document.getElementById("testimonial-prev");
+const testimonialNext = document.getElementById("testimonial-next");
+let testimonialIndex = 0;
+let testimonialInterval = null;
+
 /* -------------------------------------------------
    1️⃣  Validate & obtain stored language
    ------------------------------------------------- */
@@ -64,6 +72,26 @@ function renderSelectSpecialties(t) {
   if (!select) {return;}
   select.innerHTML = `<option value="">${t.appointment.selectSpecialty}</option>` +
     services.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
+}
+
+function renderTestimonials(t) {
+  if (!testimonialSlides || !testimonialDots) {return;}
+  const items = t.testimonials.items || [];
+  testimonialSlides.innerHTML = items.map((item, i) => `
+    <div class="testimonial-slide" role="tabpanel" aria-label="Testimonio ${i + 1} de ${items.length}">
+      <blockquote>"${item.quote}"</blockquote>
+      <cite>— ${item.author}</cite>
+    </div>
+  `).join("");
+  testimonialDots.innerHTML = items.map((_, i) => `
+    <button class="testimonial-dot ${i === testimonialIndex ? "active" : ""}"
+            type="button"
+            role="tab"
+            aria-label="Testimonio ${i + 1}"
+            aria-selected="${i === testimonialIndex}">
+    </button>
+  `).join("");
+  updateTestimonialCarousel();
 }
 
 /* -------------------------------------------------
@@ -162,6 +190,69 @@ function setLang(lang) {
   renderServices(t);
   renderTeam(t);
   renderSelectSpecialties(t);
+  renderTestimonials(t);
+  initTestimonialCarousel();
+}
+
+/* -------------------------------------------------
+   4️⃣  Testimonial carousel
+   ------------------------------------------------- */
+function updateTestimonialCarousel() {
+  if (!testimonialSlides) {return;}
+  testimonialSlides.style.transform = `translateX(-${testimonialIndex * 100}%)`;
+  if (testimonialDots) {
+    const dots = testimonialDots.querySelectorAll(".testimonial-dot");
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === testimonialIndex);
+      dot.setAttribute("aria-selected", String(i === testimonialIndex));
+    });
+  }
+}
+
+function goToTestimonial(index) {
+  const itemsCount = testimonialSlides ? testimonialSlides.children.length : 0;
+  testimonialIndex = (index + itemsCount) % itemsCount;
+  updateTestimonialCarousel();
+  restartTestimonialAutoplay();
+}
+
+function startTestimonialAutoplay() {
+  stopTestimonialAutoplay();
+  testimonialInterval = setInterval(() => {
+    goToTestimonial(testimonialIndex + 1);
+  }, 5000);
+}
+
+function stopTestimonialAutoplay() {
+  if (testimonialInterval) {
+    clearInterval(testimonialInterval);
+    testimonialInterval = null;
+  }
+}
+
+function restartTestimonialAutoplay() {
+  stopTestimonialAutoplay();
+  startTestimonialAutoplay();
+}
+
+function initTestimonialCarousel() {
+  if (!testimonialSlides || !testimonialPrev || !testimonialNext || !testimonialDots) {return;}
+
+  testimonialPrev.addEventListener("click", () => goToTestimonial(testimonialIndex - 1));
+  testimonialNext.addEventListener("click", () => goToTestimonial(testimonialIndex + 1));
+
+  testimonialDots.addEventListener("click", (event) => {
+    const dot = event.target.closest(".testimonial-dot");
+    if (!dot) {return;}
+    const index = Array.from(testimonialDots.children).indexOf(dot);
+    if (index >= 0) {goToTestimonial(index);}
+  });
+
+  /* Pause autoplay on hover */
+  testimonialSlides.parentElement.addEventListener("mouseenter", stopTestimonialAutoplay);
+  testimonialSlides.parentElement.addEventListener("mouseleave", startTestimonialAutoplay);
+
+  startTestimonialAutoplay();
 }
 
 /* -------------------------------------------------
@@ -226,6 +317,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderServices();
   renderTeam(getTranslations(currentLang));
   renderSelectSpecialties(getTranslations(currentLang));
+  renderTestimonials(getTranslations(currentLang));
+  initTestimonialCarousel();
 
   initAppointmentForm("appointment-form", (result) => {
     const resultEl = document.getElementById("appointment-result");

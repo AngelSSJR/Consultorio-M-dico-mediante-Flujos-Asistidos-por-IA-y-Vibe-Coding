@@ -24,7 +24,12 @@ export const es = {
   },
   testimonials: {
     title: "Testimonios",
-    description: "Voces de nuestros pacientes (contenido demostrativo)."
+    description: "Voces de nuestros pacientes (contenido demostrativo).",
+    items: [
+      { quote: "Excelente atención y trato humano. Muy recomendado.", author: "Ana García" },
+      { quote: "La clínica es moderna y los doctores son muy profesionales.", author: "Luis Martínez" },
+      { quote: "Muy satisfecho con el servicio de pediatría para mis hijos.", author: "Carmen Rojas" }
+    ]
   },
   appointment: {
     title: "Solicitar Cita",
