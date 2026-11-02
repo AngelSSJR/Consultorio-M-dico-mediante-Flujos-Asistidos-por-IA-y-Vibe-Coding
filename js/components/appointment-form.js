@@ -1,7 +1,7 @@
 import { validateForm } from "../utils/validation.js";
 import { requestAppointment } from "../services/appointment-service.js";
 
-export function initAppointmentForm(formId, onSuccess) {
+export function initAppointmentForm(formId, onSuccess, onError) {
   const form = document.getElementById(formId);
   if (!form) {return;}
 
@@ -45,7 +45,7 @@ export function initAppointmentForm(formId, onSuccess) {
       form.reset();
     } catch (error) {
       console.error(error);
-      alert("Ocurrió un error al procesar la solicitud.");
+      if (onError) {onError("Ocurrió un error al procesar la solicitud. Intente nuevamente.");}
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;

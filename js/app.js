@@ -324,9 +324,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultEl = document.getElementById("appointment-result");
     if (resultEl) {
       const t = getTranslations(currentLang);
-      resultEl.classList.remove("hidden", "text-error", "text-success");
-      resultEl.classList.add("text-success", "mt-4", "text-sm", "font-medium");
+      resultEl.classList.remove("hidden", "alert-error");
+      resultEl.classList.add("alert-success");
       resultEl.textContent = t.appointment.successMessage.replace("{ref}", result.reference);
+      resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, (errorMessage) => {
+    const resultEl = document.getElementById("appointment-result");
+    if (resultEl) {
+      resultEl.classList.remove("hidden", "alert-success");
+      resultEl.classList.add("alert-error");
+      resultEl.textContent = errorMessage;
       resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   });
