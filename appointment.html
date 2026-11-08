@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitar Cita – MediCare Plus</title>
+
+  <link rel="icon" type="image/jpeg" href="assets/images/hero.jpg">
+
+  <!-- Tailwind CSS CDN (v3.x) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Page JavaScript -->
+  <script type="module" src="js/pages/appointment.js" defer></script>
+</head>
+<body class="bg-background text-primary font-sans">
+
+  <!-- Skip link -->
+  <a href="#main-content"
+     class="skip-link sr-only focus:not-sr-only focus-visible:outline-none focus-visible:ring-2 focus-visible-ring-primary">
+    Ir al contenido principal
+  </a>
+
+  <!-- Anchor home -->
+  <div id="home"></div>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="sticky top-0 bg-surface shadow-md z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+
+      <!-- Brand -->
+      <a href="index.html"
+         class="flex items-center space-x-2 text-2xl font-sans heading-sans text-primary">
+        <img src="assets/icons/Logotipo sanitario MediCare Plus.png"
+             alt="Logotipo de MediCare Plus"
+             class="h-8 w-auto">
+        <span>MediCare Plus</span>
+      </a>
+
+      <!-- Mobile button -->
+      <button id="mobile-menu-btn"
+              class="md:hidden inline-flex items-center justify-center p-2 rounded-md focus-visible:outline-none focus-visible-ring-primary"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+              aria-label="Abrir menú">
+        <svg class="shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- Desktop navigation -->
+      <nav class="hidden md:flex space-x-6"
+           aria-label="Navegación principal"
+           id="desktop-nav">
+        <a href="index.html#home"
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="home">
+          <span class="nav-text"></span>
+        </a>
+        <a href="index.html#services"
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="services">
+          <span class="nav-text"></span>
+        </a>
+        <a href="index.html#team"
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="team">
+          <span class="nav-text"></span>
+        </a>
+        <a href="index.html#contact"
+           class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+           data-nav="contact">
+          <span class="nav-text"></span>
+        </a>
+      </nav>
+
+      <!-- Language selector -->
+      <div class="relative" id="lang-dropdown">
+        <button id="lang-toggle"
+                class="flex items-center space-x-1 px-2 py-1 rounded-md bg-gray-200 text-primary focus-visible:outline-none focus-visible-ring-primary"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Cambiar idioma">
+          <svg class="shrink-0 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 012.046 2.046a9 9 0 0112.708 12.708zM5 13l10 10-5-6"/></svg>
+          <span id="current-lang-label">ES</span>
+        </button>
+        <ul id="lang-menu"
+            class="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-md shadow-lg hidden">
+          <li>
+            <button data-lang="es"
+                    class="flex items-center w-full px-2 py-1 hover:bg-gray-100 focus-visible:outline-none focus-visible-ring-primary">
+              <svg class="w-4 h-4 mr-1" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="480" fill="#c60b1e"/><rect y="160" width="640" height="160" fill="#ffc400"/></svg>
+              <span>ES</span>
+            </button>
+          </li>
+          <li>
+            <button data-lang="en"
+                    class="flex items-center w-full px-2 py-1 hover:bg-gray-100 focus-visible:outline-none focus-visible-ring-primary">
+              <svg class="w-4 h-4 mr-1" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="t"><path d="M0 0h60v30H0z"/></clipPath><g clip-path="url(#t)"><rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><rect width="60" height="30" fill="none" stroke="#fff" stroke-width="10"/></g></svg>
+              <span>EN</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu"
+         class="md:hidden hidden px-4 pb-4 space-y-4">
+      <a href="index.html#home"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="home"></a>
+      <a href="index.html#services"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="services"></a>
+      <a href="index.html#team"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="team"></a>
+      <a href="index.html#contact"
+         class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
+         data-nav="contact"></a>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN ==================== -->
+  <main id="main-content" class="pt-8 pb-16">
+
+    <!-- Section hero -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary-deep/10 text-primary-deep text-sm font-semibold mb-4">
+          <span class="w-2 h-2 rounded-full bg-primary-deep"></span>
+          <span id="badge-demo">Modo demostrativo</span>
+        </div>
+        <h1 id="page-title" class="heading-sans text-3xl lg:text-4xl text-primary mb-4">Solicitar Cita</h1>
+        <p id="page-desc" class="text-secondary text-lg max-w-2xl mx-auto">
+          Complete el formulario. Esta es una demostración; no se reserva una cita real.
+        </p>
+      </div>
+    </section>
+
+    <!-- Form card -->
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-surface rounded-xl border border-gray-200 shadow-xl p-8 sm:p-12">
+        <form id="appointment-form" class="space-y-6" novalidate>
+
+          <!-- Personal info block -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="name" id="name-label" class="block text-sm font-medium text-primary">
+                Nombre completo <span class="text-error text-xs ml-1">*</span>
+              </label>
+              <input type="text" id="name" name="name" required
+                     placeholder="Juan Pérez">
+            </div>
+            <div class="space-y-2">
+              <label for="dni" id="dni-label" class="block text-sm font-medium text-primary">
+                Cédula / DNI <span class="text-error text-xs ml-1">*</span>
+              </label>
+              <input type="text" id="dni" name="dni" required
+                     placeholder="12345678">
+            </div>
+            <div class="md:col-span-2 space-y-2">
+              <label for="email" id="email-label" class="block text-sm font-medium text-primary">
+                Correo electrónico <span class="text-error text-xs ml-1">*</span>
+              </label>
+              <input type="email" id="email" name="email" required
+                     placeholder="juan@correo.com">
+            </div>
+            <div class="space-y-2">
+              <label for="phone" id="phone-label" class="block text-sm font-medium text-primary">
+                Teléfono <span class="text-error text-xs ml-1">*</span>
+              </label>
+              <input type="tel" id="phone" name="phone" required
+                     placeholder="+1 234 567 890">
+            </div>
+          </div>
+
+          <!-- Appointment details block -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="specialty" id="specialty-label" class="block text-sm font-medium text-primary">
+                Especialidad <span class="text-error text-xs ml-1">*</span>
+              </label>
+              <select id="specialty" name="specialty" required>
+                <option value="" id="opt-select-specialty">Seleccione una especialidad</option>
+              </select>
+            </div>
+            <div class="space-y-2">
+              <label for="date" id="date-label" class="block text-sm font-medium text-primary">
+                Fecha <span class="text-error text-xs ml-1">*</span>
+              </label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="space-y-2">
+              <label for="time" id="time-label" class="block text-sm font-medium text-primary">
+                Hora <span class="text-error text-xs ml-1">*</span>
+              </label>
+              <input type="time" id="time" name="time" required>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="pt-4">
+            <button type="submit" id="submit-btn" class="btn-primary w-full py-3 text-lg">
+              <span id="btn-text">Enviar solicitud</span>
+              <svg id="btn-loader" class="hidden w-5 h-5 mr-2 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 2 5.373 2 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <p id="demo-notice" class="text-xs text-gray-500 text-center mt-2">
+            Formulario demostrativo: no se ha reservado una cita real.
+          </p>
+
+        </form>
+
+        <!-- Result message -->
+        <div id="appointment-result" class="alert hidden mt-6 p-4 rounded-lg text-sm font-medium flex items-center gap-3" role="alert" aria-live="polite">
+          <span id="result-icon" class="flex-shrink-0 w-5 h-5"></span>
+          <span id="result-text"></span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-primary-deep text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center space-x-2 text-xl font-sans heading-sans">
+        <img src="assets/icons/Logotipo sanitario MediCare Plus.png"
+             alt="Logotipo de MediCare Plus"
+             class="h-6 w-auto">
+        <span>MediCare Plus</span>
+      </div>
+      <p id="footer-text" class="text-gray-300 text-sm">
+        Landing page demostrativa desarrollada con Vibe Coding y asistencia de IA. Todos los datos son ilustrativos.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

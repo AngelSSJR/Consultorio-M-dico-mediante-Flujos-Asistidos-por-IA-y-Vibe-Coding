@@ -76,7 +76,7 @@
           <svg class="shrink-0 w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           <span class="nav-text"></span>
         </a>
-        <a href="#appointment"
+        <a href="appointment.html"
            class="nav-link flex items-center text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
            data-nav="appointment">
           <svg class="shrink-0 w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21a1 1 0 011-1h4a1 1 0 011 1v1m0 0h-6m6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m0 0h4a1 1 0 011-1v-1a1 1 0 00-1-1H6a1 1 0 00-1 1v1a1 1 0 011 1z"/></svg>
@@ -135,7 +135,7 @@
       <a href="#team"
          class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
          data-nav="team"></a>
-      <a href="#appointment"
+      <a href="appointment.html"
          class="nav-link block text-secondary hover:text-primary focus-visible:outline-none focus-visible-ring-primary"
          data-nav="appointment"></a>
       <a href="#contact"
@@ -157,7 +157,7 @@
             class="heading-sans text-4xl lg:text-5xl text-primary"></h1>
         <p id="hero-description"
            class="text-lg text-secondary"></p>
-        <a href="#appointment"
+        <a href="appointment.html"
            id="hero-cta"
            class="inline-block btn-primary mt-4"></a>
       </div>
@@ -234,52 +234,6 @@
             <!-- Indicadores inyectados por JS -->
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- CITA / CONTACTO -->
-    <section id="appointment"
-             class="py-16 bg-surface"
-             aria-labelledby="appointment-title">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8">
-          <h2 id="appointment-title" class="heading-sans text-3xl lg:text-4xl text-primary mb-4">Solicitar Cita</h2>
-          <p id="appointment-desc" class="text-secondary">Complete el formulario. Esta es una demostración; no se reserva una cita real.</p>
-        </div>
-        <form id="appointment-form" class="space-y-4" novalidate>
-          <div>
-            <label for="name" id="name-label" class="block text-sm font-medium text-primary mb-1">Nombre completo <span class="text-error">*</span></label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div>
-            <label for="dni" id="dni-label" class="block text-sm font-medium text-primary mb-1">Cédula / DNI <span class="text-error">*</span></label>
-            <input type="text" id="dni" name="dni" required>
-          </div>
-          <div>
-            <label for="email" id="email-label" class="block text-sm font-medium text-primary mb-1">Correo electrónico <span class="text-error">*</span></label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div>
-            <label for="phone" id="phone-label" class="block text-sm font-medium text-primary mb-1">Teléfono <span class="text-error">*</span></label>
-            <input type="tel" id="phone" name="phone" required>
-          </div>
-          <div>
-            <label for="specialty" id="specialty-label" class="block text-sm font-medium text-primary mb-1">Especialidad <span class="text-error">*</span></label>
-            <select id="specialty" name="specialty" required>
-              <option value="">Seleccione una especialidad</option>
-            </select>
-          </div>
-          <div>
-            <label for="date" id="date-label" class="block text-sm font-medium text-primary mb-1">Fecha <span class="text-error">*</span></label>
-            <input type="date" id="date" name="date" required>
-          </div>
-          <div>
-            <label for="time" id="time-label" class="block text-sm font-medium text-primary mb-1">Hora <span class="text-error">*</span></label>
-            <input type="time" id="time" name="time" required>
-          </div>
-          <button type="submit" class="btn-primary w-full">Enviar solicitud</button>
-        </form>
-        <div id="appointment-result" class="alert hidden mt-4 p-4 rounded-lg text-sm font-medium"></div>
       </div>
     </section>
 
