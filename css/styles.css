@@ -3,10 +3,8 @@
    ---------------------------------------------------------------------- */
 
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 html {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   letter-spacing: -0.01em;
@@ -14,8 +12,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.heading-serif {
-  font-family: 'DM Serif Display', Georgia, serif;
+.heading-sans {
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
   letter-spacing: -0.02em;
 }
 
