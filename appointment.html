@@ -89,7 +89,8 @@
                 aria-haspopup="true"
                 aria-expanded="false"
                 aria-label="Cambiar idioma">
-          <svg class="shrink-0 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 012.046 2.046a9 9 0 0112.708 12.708zM5 13l10 10-5-6"/></svg>
+          <!-- Language icon -->
+          <svg class="shrink-0 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.65 0 3-1.35 3-3v-6m0 0a9 9 0 01-9-9M3 3a9 9 0 019 9m0 0c0 1.65 1.35 3 3 3h6m-6 0a9 9 0 019-9m0 0c0-1.65-1.35-3-3-3H3m-9 9a9 9 0 019-9"></path></svg>
           <span id="current-lang-label">ES</span>
         </button>
         <ul id="lang-menu"
@@ -97,12 +98,16 @@
           <li>
             <button data-lang="es"
                     class="flex items-center w-full px-2 py-1 hover:bg-gray-100 focus-visible:outline-none focus-visible-ring-primary">
+              <!-- Flag Spain -->
+              <svg class="w-4 h-4 mr-1" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="480" fill="#c60b1e"/><rect y="160" width="640" height="160" fill="#ffc400"/><rect y="160" width="640" height="160" fill="#c60b1e"/></svg>
               <span>ES</span>
             </button>
           </li>
           <li>
             <button data-lang="en"
                     class="flex items-center w-full px-2 py-1 hover:bg-gray-100 focus-visible:outline-none focus-visible-ring-primary">
+              <!-- Flag United Kingdom -->
+              <svg class="w-4 h-4 mr-1" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><rect width="60" height="30" fill="none" stroke="#fff" stroke-width="10"/></svg>
               <span>EN</span>
             </button>
           </li>
