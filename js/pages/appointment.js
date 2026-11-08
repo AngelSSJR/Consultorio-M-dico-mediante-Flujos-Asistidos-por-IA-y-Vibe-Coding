@@ -74,7 +74,10 @@ function renderLabels(t) {
 
 function renderSpecialties(t) {
   specialtySelect.innerHTML = `<option value="" id="opt-select-specialty">${t.appointment.selectSpecialty}</option>` +
-    services.map((s) => `<option value="${s.id}">${s.name}</option>`).join("");
+    services.map((s) => {
+      const item = t.services.items?.[s.id] || {};
+      return `<option value="${s.id}">${item.name || s.name}</option>`;
+    }).join("");
 }
 
 function setLang(lang) {

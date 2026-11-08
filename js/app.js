@@ -36,19 +36,24 @@ let currentLang = getStoredLang();
 /* -------------------------------------------------
    2️⃣  Render dynamic content blocks
    ------------------------------------------------- */
-function renderServices() {
+function renderServices(t) {
   const grid = document.getElementById("services-grid");
   if (!grid) {return;}
-  grid.innerHTML = services.map(s => `
+  grid.innerHTML = services.map(s => {
+    const item = t.services.items?.[s.id] || {};
+    const name = item.name || s.name;
+    const description = item.description || s.description;
+    return `
     <article class="bg-surface p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
       <img src="${s.image}"
-           alt="${s.name}"
+           alt="${name}"
            class="w-full h-32 object-cover rounded-lg mb-4"
            onerror="this.src='assets/images/hero.jpg'; this.alt='Imagen no disponible';">
-      <h3 class="text-lg font-semibold text-primary mb-2">${s.name}</h3>
-      <p class="text-secondary text-sm">${s.description}</p>
+      <h3 class="text-lg font-semibold text-primary mb-2">${name}</h3>
+      <p class="text-secondary text-sm">${description}</p>
     </article>
-  `).join("");
+  `;
+  }).join("");
 }
 
 function renderTeam(t) {
@@ -130,6 +135,11 @@ function setLang(lang) {
   setText("testimonials-title", t.testimonials.title);
   setText("appointment-title", t.appointment.title);
   setText("contact-title", t.contact.title);
+
+  // Contact details
+  setText("contact-address", t.contact.address);
+  setText("contact-phone", t.contact.phone);
+  setText("contact-email", t.contact.email);
 
   // Description paragraphs are next siblings of titles in each section
   const descMap = {
@@ -314,7 +324,7 @@ window.addEventListener("resize", () => {
    ------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   setLang(currentLang);
-  renderServices();
+  renderServices(getTranslations(currentLang));
   renderTeam(getTranslations(currentLang));
   renderSelectSpecialties(getTranslations(currentLang));
   renderTestimonials(getTranslations(currentLang));

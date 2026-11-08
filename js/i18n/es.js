@@ -15,7 +15,15 @@ export const es = {
   services: {
     title: "Nuestros Servicios",
     description: "Atención médica integral para toda la familia.",
-    notAvailable: "Servicio no disponible"
+    notAvailable: "Servicio no disponible",
+    items: {
+      "consulta-general": { name: "Consulta General", description: "Atención primaria y medicina familiar." },
+      "pediatria": { name: "Pediatría", description: "Cuidado de la salud de niñas, niños y adolescentes." },
+      "cardiologia": { name: "Cardiología", description: "Prevención y tratamiento de enfermedades cardiovasculares." },
+      "ginecologia": { name: "Ginecología", description: "Salud integral de la mujer en todas las etapas." },
+      "traumatologia": { name: "Traumatología", description: "Atención de lesiones del sistema músculo esquelético." },
+      "diagnostico": { name: "Diagnóstico por Imagen", description: "Rayos X, ultrasonido y resonancia magnética." }
+    }
   },
   team: {
     title: "Nuestro Equipo",
@@ -54,7 +62,7 @@ export const es = {
   contact: {
     title: "Contáctanos",
     description: "¿Tiene preguntas? Escríbanos y le responderemos a la brevedad.",
-    address: "Dirección simulada",
+    address: "Dirección",
     phone: "Teléfono",
     email: "Correo",
     demoData: "Datos ilustrativos, no representan una clínica real."

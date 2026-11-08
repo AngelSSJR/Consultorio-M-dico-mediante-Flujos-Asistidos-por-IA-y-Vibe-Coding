@@ -15,7 +15,15 @@ export const en = {
   services: {
     title: "Our Services",
     description: "Comprehensive medical care for the whole family.",
-    notAvailable: "Service not available"
+    notAvailable: "Service not available",
+    items: {
+      "consulta-general": { name: "General Consultation", description: "Primary care and family medicine." },
+      "pediatria": { name: "Pediatrics", description: "Health care for girls, boys and adolescents." },
+      "cardiologia": { name: "Cardiology", description: "Prevention and treatment of cardiovascular diseases." },
+      "ginecologia": { name: "Gynecology", description: "Comprehensive women's health at all stages." },
+      "traumatologia": { name: "Traumatology", description: "Care for musculoskeletal system injuries." },
+      "diagnostico": { name: "Diagnostic Imaging", description: "X-rays, ultrasound and MRI." }
+    }
   },
   team: {
     title: "Our Team",
@@ -54,7 +62,7 @@ export const en = {
   contact: {
     title: "Contact Us",
     description: "Have questions? Write to us and we will reply shortly.",
-    address: "Simulated address",
+    address: "Address",
     phone: "Phone",
     email: "Email",
     demoData: "Illustrative data, does not represent a real clinic."
